@@ -6,8 +6,12 @@
 #include "Arduino.h"
 #include "IO.h"
 
-IO:: IO(int serial) {
-  Serial.begin(serial);
+IO :: IO(int serial){
+  _serial = serial;
+}
+
+void IO :: init(){
+  Serial.begin(_serial);
 }
 
 int IO :: recv(){
@@ -19,5 +23,9 @@ int IO :: recv(){
 }
 
 void IO :: wrt(String s) {
+  Serial.println(s);
+}
+
+void IO :: wrt(int s){
   Serial.println(s);
 }
